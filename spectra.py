@@ -11,11 +11,11 @@ def Gaussian_line(wav,wav0,sigma,amp):
     wav0 = np.asarray(wav0)
     wav  = np.asarray(wav)
     if wav0.ndim == 0:
-        result =  amp*(np.exp(-(wav - wav0)**2) / (2 * sigma**2))
+        result =  amp*np.exp(-(wav - wav0)**2 / (2 * sigma**2))
         return result
     
     else:
-        result = amp*(np.exp(-(wav[:,np.newaxis] - wav0[np.newaxis,:])**2) / (2 * sigma**2))
+        result = amp * np.exp(-(wav[:, np.newaxis] - wav0[np.newaxis, :])**2 / (2 * sigma**2))
         return result
     
 profile = Gaussian_line(wav,wav0,sigma,amp)
