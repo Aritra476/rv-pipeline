@@ -1,18 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-wav = np.linspace(4990,5010,1000)
-wav0 = 5000
-sigma = 2.0
-amp = 1.0
-depth = 0.7
 
-# as close to Normalized flux it can be 
-def flux(wav,wav0,sigma,amp):
-    x = 1 - depth*(amp*np.exp(-(wav-wav0)**2/(2*sigma**2)))
-    return x
-
-flux = np.asarray(flux(wav,wav0,sigma,amp))
 
 def add_noise (flux,snr,read_noise = 3.0 ,seed = None):
 
@@ -59,6 +48,19 @@ def add_noise (flux,snr,read_noise = 3.0 ,seed = None):
     return flux_noisy
 
 if __name__ == '__main__':
+
+    wav = np.linspace(4990,5010,1000)
+    wav0 = 5000
+    sigma = 2.0
+    amp = 1.0
+    depth = 0.7
+
+    # as close to Normalized flux it can be 
+    def flux(wav,wav0,sigma,amp):
+        x = 1 - depth*(amp*np.exp(-(wav-wav0)**2/(2*sigma**2)))
+        return x
+
+    flux = np.asarray(flux(wav,wav0,sigma,amp))
 
     snr = 100.0
 

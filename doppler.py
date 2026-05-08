@@ -38,7 +38,7 @@ def doppler_shift_relativistic(wav,v_t):
     wavelength with doppler shift calculated
     according to the velocity it is calculated
 
-    Equations : lambda = Lambda0 (1+v_r/c)
+    Equations : lambda_obs = lambda_rest * sqrt((1+v_r/c)/(1-v_r/c))
     where lambda is shifted and lambda0 is without shift and c being the speed of light unit correspondingly to v_r
 
     it is  valid  for velocity which isin terms of c or very high velocity regime(0c to 0.9c )
