@@ -9,16 +9,42 @@ c1 = const.c.to("km/s").value
 wav = np.array([5000,5005,5010])
 
 def doppler_shift_classical(wav,v_t):
-    '''this function find the shift in the wavelength
-      when the body emitting have a certain velocity much lower than c for classical'''
+    '''
+    parameters : 
+     wav : wavelength n angstrom 
+     v_r  : velocity of th body in which frame it emit the photon  
+     
+    Output:
+    wavelength with doppler shift calculated
+    according to the velocity it is calculated
+
+    Equations : lambda = Lambda0 (1+v_r/c)
+    where lambda is shifted and lambda0 is without shift and c being the speed of light unit correspondingly to v_r
+
+    it is only valid for v<<<<c for low velocity regime
+    
+    '''
     B = v_t/c1
     wav0  = wav*(1+B)
     return wav0
 
 def doppler_shift_relativistic(wav,v_t):
-    '''this function find the shift in the wavelength
-      when the body emitting have a certain velocity much equal to c for relativistic'''
-    
+    '''
+    parameters : 
+     wav : wavelength n angstrom 
+     v_r  : velocity of th body in which frame it emit the photon  
+     
+    Output:
+    wavelength with doppler shift calculated
+    according to the velocity it is calculated
+
+    Equations : lambda = Lambda0 (1+v_r/c)
+    where lambda is shifted and lambda0 is without shift and c being the speed of light unit correspondingly to v_r
+
+    it is  valid  for velocity which isin terms of c or very high velocity regime(0c to 0.9c )
+
+    '''
+  
     B = v_t/c1
     wav0 = wav*(np.sqrt((1 + B)/( 1 - B)))
     return wav0
